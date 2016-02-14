@@ -3,30 +3,50 @@ package starterkit.stockMarket.wallet;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+import starterkit.stockMarket.to.StockTo;
+
+@Component
 public class StockWallet {
 	
-	// TODOÖ Think about Map K,V
-	
-	private Map<SingleStock,Long> ownedStocks;
+	private Map<StockTo,Long> ownedStocks;
 	
 	public StockWallet() {
-		ownedStocks = new HashMap<SingleStock, Long>();
+		ownedStocks = new HashMap<StockTo, Long>();
 	}
 
-	public Map<SingleStock,Long> getOwnedStocks() {
+	public Map<StockTo,Long> getOwnedStocks() {
 		return ownedStocks;
 	}
 
-	public void setOwnedStocks(Map<SingleStock,Long> ownedStocks) {
+	public void setOwnedStocks(Map<StockTo,Long> ownedStocks) {
 		this.ownedStocks = ownedStocks;
 	}
 	
-	public void addStocksToWallet(SingleStock stock, Long amount) {
-		// TODO: fill the body
+	public void addStocksToWallet(StockTo stocks) {
+		if(this.ownedStocks.containsKey(stocks.getCompany())) {
+			long stocksAmount = this.ownedStocks.get(stocks) + stocks.getAmount();
+			StockTo stockTo = new StockTo(stocks.getCompany(), stocks.getBuyPrice(), stocksAmount);
+			this.ownedStocks.put(stockTo, stocksAmount);
+		}
+		else {
+			this.ownedStocks.put(stocks, stocks.getAmount());
+		}
+		
 	}
 	
-	public void takeStocksFromWallet(Long amount) {
-		// TODO: fill the body
+	public void removeStocksFromWallet(StockTo stocks) {
+		if(this.ownedStocks.get(stocks.getAmount()) > stocks.getAmount()) {
+			long stocksAmount = this.ownedStocks.get(stocks) - stocks.getAmount();
+			StockTo stockTo = new StockTo(stocks.getCompany(), stocks.getBuyPrice(), stocksAmount);
+			this.ownedStocks.put(stockTo, stocksAmount);
+		}
+		else {
+			this.ownedStocks.remove(stocks);
+		}
+		
 	}
 
 }
+;
