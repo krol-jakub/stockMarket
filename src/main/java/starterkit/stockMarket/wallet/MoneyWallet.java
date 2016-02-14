@@ -1,15 +1,17 @@
 package starterkit.stockMarket.wallet;
 
+import starterkit.stockMarket.wallet.currency.Pln;
+
 public class MoneyWallet {
 	
-	private Currency currency;
+	private Pln plnAmount;
 
-	public Currency getCurrency() {
-		return currency;
+	public Pln getCurrency() {
+		return plnAmount;
 	}
 
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
+	public void setCurrency(Pln plns) {
+		this.plnAmount = plns;
 	}
 
 }
