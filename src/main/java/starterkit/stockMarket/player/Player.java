@@ -3,6 +3,7 @@ package starterkit.stockMarket.player;
 import starterkit.stockMarket.broker.Broker;
 import starterkit.stockMarket.strategy.Strategy;
 import starterkit.stockMarket.strategy.Impl.RandomStrategy;
+import starterkit.stockMarket.to.StockTo;
 import starterkit.stockMarket.wallet.MoneyWallet;
 import starterkit.stockMarket.wallet.StockWallet;
 
