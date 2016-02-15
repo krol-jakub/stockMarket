@@ -6,13 +6,15 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
+import org.joda.time.LocalDate;
+
 import starterkit.stockMarket.stockReader.StockReader;
 import starterkit.stockMarket.to.StockTo;
 
 public class StockMarket {
 	
 	private StockReader stockReader = new StockReader();
-	private Map<Date, Set<StockTo>> stockList;
+	private Map<LocalDate, Set<StockTo>> stockList;
 	
 	private String something = "stock something";
 	
@@ -45,11 +47,11 @@ public class StockMarket {
 		this.something = something;
 	}
 
-	public Map<Date, Set<StockTo>> getStockList() {
+	public Map<LocalDate, Set<StockTo>> getStockList() {
 		return stockList;
 	}
 
-	public void setStockList(Map<Date, Set<StockTo>> stockList) {
+	public void setStockList(Map<LocalDate, Set<StockTo>> stockList) {
 		this.stockList = stockList;
 	}
 

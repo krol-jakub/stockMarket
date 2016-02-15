@@ -1,44 +1,45 @@
 package starterkit.stockMarket.date;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.joda.time.LocalDate;
 
 public class DateIterator {
 	
-	private Date date;
-	private String firstDate = "20130102";
-	private SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	private LocalDate date = new LocalDate(2013,1,2);
 	
 	public DateIterator() {
-		try {
-			this.date = format.parse(firstDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 		
 	}
 	
-	@SuppressWarnings("deprecation")
-	public boolean hasNextDate() {
-		if(this.date.getMonth() == 11 && this.date.getDay() == 31) {
-			return false;
+	public void nextDay() {
+		if(!nextDayAWeekend()) {
+			this.date = date.plusDays(1);		
 		}
-		return true;
+		else {
+			this.date = date.plusDays(3);
+		}
 	}
 	
-	@SuppressWarnings("deprecation")
-	public void next() {
-		if(this.hasNextDate()) {
-		date.setDate(date.getDay());
+	public boolean nextDayAWeekend() {
+		if(date.getDayOfWeek() == 5) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean hasNextDate() {
+		if(date.getMonthOfYear() == 12 && date.getDayOfMonth() == 31) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

@@ -27,8 +27,4 @@ public class Broker {
 		this.something = something;
 	}
 	
-	public void buyStocks(int amount) {
-		
-	}
-	
 }

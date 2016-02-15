@@ -15,13 +15,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import org.joda.time.LocalDate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class StockReader {
 	
-	public Map<Date, Set<StockTo>> readFile() throws NumberFormatException, IOException, ParseException {
-		Map<Date, Set<StockTo>> tmpMap = new HashMap<Date, Set<StockTo>>();
+	public Map<LocalDate, Set<StockTo>> readFile() throws NumberFormatException, IOException, ParseException {
+		Map<LocalDate, Set<StockTo>> tmpMap = new HashMap<LocalDate, Set<StockTo>>();
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\dane.csv"));
 			Set<StockTo> stocks = new HashSet<StockTo>();
@@ -30,8 +31,10 @@ public class StockReader {
 				String[] linesplit = line.split(",");
 				String company = linesplit[0];
 				String date = linesplit[1];
-				SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-				Date newdate = format.parse(date);
+				int year = Integer.parseInt(date.substring(0, 4));
+				int month = Integer.parseInt(date.substring(4, 6));
+				int day = Integer.parseInt(date.substring(6, 8));
+				LocalDate newdate = new LocalDate(year, month, day);
 				double value = Double.parseDouble(linesplit[2]);
 				if(tmpMap.containsKey(newdate)) {
 					stocks = tmpMap.get(newdate);
