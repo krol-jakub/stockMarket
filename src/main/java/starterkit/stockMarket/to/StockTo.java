@@ -13,6 +13,12 @@ public class StockTo {
 		this.amount = amount;
 	}
 	
+	public StockTo(String company2, double buyValue, int i) {
+		this.company = company2;
+		this.buyPrice = buyValue;
+		this.amount = (long) i;
+	}
+
 	public String getCompany() {
 		return company;
 	}

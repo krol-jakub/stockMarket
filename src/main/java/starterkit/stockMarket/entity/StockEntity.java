@@ -33,6 +33,11 @@ public class StockEntity implements Serializable{
 		
 	}
 
+	public StockEntity(String company2, double buyPrice) {
+		this.company = company2;
+		this.buyValue = buyPrice;
+	}
+
 	public Long getId() {
 		return id;
 	}
