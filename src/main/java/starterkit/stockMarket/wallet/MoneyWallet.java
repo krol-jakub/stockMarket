@@ -8,11 +8,15 @@ public class MoneyWallet {
 	private Pln plnAmount;
 	private Euro euroAmount;
 
-	public Pln getCurrency() {
+	public MoneyWallet(int i) {
+		this.plnAmount = new Pln(i);
+	}
+
+	public Pln getPlnAmount() {
 		return plnAmount;
 	}
 
-	public void setCurrency(Pln plns) {
+	public void setPlnAmount(Pln plns) {
 		this.plnAmount = plns;
 	}
 

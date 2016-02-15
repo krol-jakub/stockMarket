@@ -1,15 +1,15 @@
 package starterkit.stockMarket.broker;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import starterkit.stockMarket.stockMarket.StockMarket;
 
-@Component
 public class Broker {
 
-	@Autowired
-	private StockMarket stockMarket;
+	private StockMarket stockMarket = new StockMarket();
+	
+	private String something = "broker something";
+	
+	public Broker() {
+	}
 
 	public StockMarket getStockMarket() {
 		return stockMarket;
@@ -17,6 +17,18 @@ public class Broker {
 
 	public void setStockMarket(StockMarket stockMarket) {
 		this.stockMarket = stockMarket;
+	}
+
+	public String getSomething() {
+		return something;
+	}
+
+	public void setSomething(String something) {
+		this.something = something;
+	}
+	
+	public void buyStocks(int amount) {
+		
 	}
 	
 }

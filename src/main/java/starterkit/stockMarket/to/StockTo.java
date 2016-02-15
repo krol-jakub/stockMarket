@@ -47,7 +47,7 @@ public class StockTo {
         if (getClass() != object.getClass())
             return false;
         StockTo stockTo = (StockTo)object;
-        if(!this.getCompany().equals(stockTo.getCompany()))
+        if(!(this.getCompany().equals(stockTo.getCompany())))
         	return false;
         
 		return true;
